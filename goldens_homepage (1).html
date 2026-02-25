@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Golden's Auto Details | Premium Mobile Detailing — Charlottesville & Richmond, VA</title>
+  <meta name="description" content="Professional mobile auto detailing serving Charlottesville and Richmond, VA. We come to you. Book online today."/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --gold:       #E8D96A;
+      --gold-mid:   #C8A84A;
+      --gold-dark:  #68512A;
+      --gold-light: #F5EDAA;
+      --black:      #000000;
+      --black-soft: #0A0A0A;
+      --black-card: #111111;
+      --black-mid:  #161616;
+      --black-3:    #1E1E1E;
+      --white:      #FFFFFF;
+      --gray:       #F1F1F1;
+      --muted:      #777777;
+      --muted-lt:   #999999;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black-soft);
+      color: var(--white);
+      font-family: 'Rajdhani', sans-serif;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── NOISE OVERLAY ─── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 72px;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(232,217,106,0.1);
+      transition: background 0.3s;
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-mid));
+      color: var(--black) !important;
+      padding: 10px 22px;
+      border-radius: 3px;
+      font-weight: 700 !important;
+      letter-spacing: 0.18em !important;
+      transition: all 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: linear-gradient(135deg, var(--white), var(--gold-light)) !important;
+      box-shadow: 0 4px 20px rgba(232,217,106,0.3);
+      color: var(--black) !important;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 100% 70% at 50% -10%, rgba(232,217,106,0.11) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(104,81,35,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(104,81,35,0.08) 0%, transparent 60%),
+        linear-gradient(180deg, var(--black) 0%, var(--black-soft) 100%);
+    }
+
+    /* animated grid lines */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(232,217,106,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232,217,106,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(232,217,106,0.08);
+      border: 1px solid rgba(232,217,106,0.25);
+      border-radius: 100px;
+      padding: 7px 18px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.1s forwards;
+    }
+
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 12vw, 9rem);
+      line-height: 0.88;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      opacity: 0;
+      animation: fadeUp 0.7s 0.25s forwards;
+    }
+
+    .hero-title .gold-line {
+      display: block;
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      margin-top: 24px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.02em;
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.4s forwards;
+    }
+
+    .hero-sub strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+
+    .hero-ctas {
+      margin-top: 44px;
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.55s forwards;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-mid));
+      color: var(--black);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      border-radius: 3px;
+      transition: all 0.25s;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--white), var(--gold-light));
+      box-shadow: 0 8px 40px rgba(232,217,106,0.35);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--gold);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      border-radius: 3px;
+      border: 1px solid rgba(232,217,106,0.35);
+      transition: all 0.25s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      background: rgba(232,217,106,0.06);
+      box-shadow: 0 4px 20px rgba(232,217,106,0.1);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      margin-top: 72px;
+      display: flex;
+      gap: 0;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.7s forwards;
+    }
+
+    .hero-stat {
+      padding: 0 40px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .hero-stat:last-child { border-right: none; }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.4rem;
+      letter-spacing: 0.04em;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeIn 1s 1.2s forwards;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(180deg, var(--gold), transparent);
+      animation: scrollPulse 2s infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
+
+    /* ─── SECTION WRAPPER ─── */
+    .section {
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .section-eyebrow {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      letter-spacing: 0.05em;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .section-title span {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    .how {
+      padding: 100px 0;
+      background: var(--black-card);
+      border-top: 1px solid rgba(232,217,106,0.08);
+      border-bottom: 1px solid rgba(232,217,106,0.08);
+    }
+
+    .how-header { text-align: center; margin-bottom: 64px; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-dark), var(--gold), var(--gold-dark), transparent);
+      opacity: 0.4;
+    }
+
+    .step {
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    .step-num {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--black-mid);
+      border: 1px solid rgba(232,217,106,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .step-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    /* ─── PACKAGES ─── */
+    .packages-section {
+      padding: 100px 0;
+      background: var(--black-soft);
+    }
+
+    .packages-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .packages-header p {
+      margin-top: 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .pkg-card {
+      background: var(--black-card);
+      border: 1px solid rgba(232,217,106,0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+
+    .pkg-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(232,217,106,0.1);
+      border-color: rgba(232,217,106,0.3);
+    }
+
+    .pkg-card.featured {
+      border-color: rgba(232,217,106,0.4);
+      position: relative;
+    }
+
+    .pkg-card.featured::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+    }
+
+    .pkg-badge {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--black);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+
+    .pkg-header {
+      padding: 28px 28px 22px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .pkg-tier {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 6px;
+    }
+
+    .pkg-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .pkg-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .pkg-price {
+      margin-top: 18px;
+      display: flex;
+      align-items: baseline;
+      gap: 3px;
+    }
+
+    .pkg-price-sym {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--gold);
+    }
+
+    .pkg-price-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      letter-spacing: 0.02em;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .pkg-price-note {
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-left: 6px;
+      padding-bottom: 4px;
+      align-self: flex-end;
+    }
+
+    .pkg-body {
+      padding: 22px 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pkg-section-label {
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 8px;
+      margin-top: 14px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(104,81,35,0.25);
+    }
+
+    .pkg-section-label:first-child { margin-top: 0; }
+
+    .pkg-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      padding: 4px 0;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.01em;
+    }
+
+    .check {
+      flex-shrink: 0;
+      width: 14px; height: 14px;
+      margin-top: 2px;
+      color: var(--gold);
+    }
+
+    .pkg-cta {
+      margin-top: auto;
+      padding-top: 22px;
+    }
+
+    .btn-pkg-gold {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      text-align: center;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-mid));
+      color: var(--black);
+      transition: all 0.2s;
+    }
+
+    .btn-pkg-gold:hover {
+      background: linear-gradient(135deg, var(--white), var(--gold-light));
+      box-shadow: 0 6px 24px rgba(232,217,106,0.28);
+    }
+
+    .btn-pkg-outline {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      text-align: center;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      border: 1px solid rgba(232,217,106,0.3);
+      color: var(--gold);
+      background: transparent;
+      transition: all 0.2s;
+    }
+
+    .btn-pkg-outline:hover {
+      border-color: var(--gold);
+      background: rgba(232,217,106,0.05);
+    }
+
+    .packages-note {
+      text-align: center;
+      margin-top: 24px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .packages-note span { color: var(--gold); }
+
+    /* ─── WHY US ─── */
+    .why {
+      padding: 100px 0;
+      background: var(--black-card);
+      border-top: 1px solid rgba(232,217,106,0.08);
+    }
+
+    .why-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .why-left {}
+
+    .why-left p {
+      margin-top: 20px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.8;
+      font-weight: 400;
+    }
+
+    .why-points {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .why-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .why-icon {
+      flex-shrink: 0;
+      width: 42px; height: 42px;
+      background: rgba(232,217,106,0.07);
+      border: 1px solid rgba(232,217,106,0.2);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .why-point-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      margin-bottom: 3px;
+    }
+
+    .why-point-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .why-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .metric-card {
+      background: var(--black-mid);
+      border: 1px solid rgba(232,217,106,0.1);
+      border-radius: 4px;
+      padding: 28px 22px;
+      text-align: center;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .metric-card:hover {
+      border-color: rgba(232,217,106,0.3);
+      transform: translateY(-3px);
+    }
+
+    .metric-card.tall {
+      grid-column: span 2;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      text-align: left;
+      padding: 24px 28px;
+    }
+
+    .metric-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      letter-spacing: 0.03em;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .metric-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted-lt);
+      margin-top: 6px;
+    }
+
+    .metric-tall-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .metric-tall-body strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials {
+      padding: 100px 0;
+      background: var(--black-soft);
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .review-card {
+      background: var(--black-card);
+      border: 1px solid rgba(232,217,106,0.1);
+      border-radius: 4px;
+      padding: 28px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .review-card:hover {
+      border-color: rgba(232,217,106,0.25);
+      transform: translateY(-3px);
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 1rem;
+      letter-spacing: 2px;
+    }
+
+    .review-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.7;
+      font-weight: 400;
+      font-style: italic;
+      flex: 1;
+    }
+
+    .review-text::before { content: '"'; color: var(--gold); font-size: 1.2em; }
+    .review-text::after  { content: '"'; color: var(--gold); font-size: 1.2em; }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .review-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      color: var(--black);
+      flex-shrink: 0;
+    }
+
+    .review-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 0.92rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+    }
+
+    .review-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.73rem;
+      color: var(--muted);
+    }
+
+    /* ─── SERVICE AREAS ─── */
+    .areas {
+      padding: 80px 0;
+      background: var(--black-card);
+      border-top: 1px solid rgba(232,217,106,0.08);
+      border-bottom: 1px solid rgba(232,217,106,0.08);
+      text-align: center;
+    }
+
+    .areas-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: 0.08em;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .areas-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+
+    .areas-pills {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .area-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--black-mid);
+      border: 1px solid rgba(232,217,106,0.18);
+      border-radius: 100px;
+      padding: 10px 22px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .area-pill:hover {
+      border-color: var(--gold);
+      background: rgba(232,217,106,0.05);
+      color: var(--white);
+    }
+
+    .area-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    /* ─── CTA BANNER ─── */
+    .cta-banner {
+      padding: 100px 0;
+      background: var(--black-soft);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(232,217,106,0.07) 0%, transparent 70%);
+    }
+
+    .cta-banner-content { position: relative; z-index: 1; }
+
+    .cta-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .cta-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      letter-spacing: 0.04em;
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .cta-title span {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .cta-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 40px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(232,217,106,0.1);
+      padding: 60px 0 32px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .footer-brand-name span { color: var(--gold); }
+
+    .footer-brand-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+
+    .footer-contact-item:hover { color: var(--gold); }
+
+    .footer-col-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.5);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-copy {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-btn {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(232,217,106,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .social-btn:hover {
+      border-color: var(--gold);
+      background: rgba(232,217,106,0.08);
+    }
+
+    .social-btn svg {
+      width: 14px; height: 14px;
+      fill: rgba(255,255,255,0.5);
+      transition: fill 0.2s;
+    }
+
+    .social-btn:hover svg { fill: var(--gold); }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 0.6; }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .container { padding: 0 32px; }
+      nav { padding: 0 32px; }
+      .packages-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+      .why-inner { grid-template-columns: 1fr; gap: 48px; }
+      .why-right { grid-template-columns: repeat(2, 1fr); }
+      .reviews-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .steps::before { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .container { padding: 0 20px; }
+      .hero-stats { flex-wrap: wrap; gap: 20px; }
+      .hero-stat { border-right: none; padding: 0 20px; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-logo">GOLDEN'S <span>&nbsp;AUTO DETAILS</span></div>
+    <ul class="nav-links">
+      <li><a href="#packages">Services</a></li>
+      <li><a href="#packages">Pricing</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#areas">Service Areas</a></li>
+      <li><a href="https://goldensautodetails.fieldd.co" class="nav-cta">Book Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        Now Serving Charlottesville &amp; Richmond, VA
+      </div>
+      <h1 class="hero-title">
+        Your Car.<br>
+        <span class="gold-line">Showroom Fresh.</span>
+      </h1>
+      <p class="hero-sub">
+        <strong>Professional mobile detailing — we come to you.</strong><br>
+        No drop-off. No waiting. Just a spotless vehicle at your door.
+      </p>
+      <div class="hero-ctas">
+        <a href="https://goldensautodetails.fieldd.co" class="btn-primary">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Book Your Detail
+        </a>
+        <a href="#packages" class="btn-secondary">
+          View Packages &amp; Pricing
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Mobile Service</div>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Packages</div>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Service Cities</div>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-num">5★</div>
+          <div class="stat-label">Guaranteed</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how section">
+    <div class="container">
+      <div class="how-header reveal">
+        <div class="section-eyebrow">Simple Process</div>
+        <div class="section-title">How It <span>Works</span></div>
+      </div>
+      <div class="steps">
+        <div class="step reveal" data-delay="0">
+          <div class="step-num">01</div>
+          <div class="step-title">Choose Your Package</div>
+          <p class="step-body">Pick from Standard, Gold Class, or Masterpiece based on what your car needs.</p>
+        </div>
+        <div class="step reveal" data-delay="100">
+          <div class="step-num">02</div>
+          <div class="step-title">Book Online</div>
+          <p class="step-body">Select your date, time, and location in seconds. No phone calls needed.</p>
+        </div>
+        <div class="step reveal" data-delay="200">
+          <div class="step-num">03</div>
+          <div class="step-title">We Come to You</div>
+          <p class="step-body">We show up at your home, office, or wherever works for you — fully equipped.</p>
+        </div>
+        <div class="step reveal" data-delay="300">
+          <div class="step-num">04</div>
+          <div class="step-title">Drive Away Clean</div>
+          <p class="step-body">Your car is handed back spotless. Pay securely online — no cash needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="packages-section section" id="packages">
+    <div class="container">
+      <div class="packages-header reveal">
+        <div class="section-eyebrow">Services & Pricing</div>
+        <div class="section-title">Choose Your <span>Package</span></div>
+        <p>Every package includes wax protection and a satisfaction guarantee. We come to you.</p>
+      </div>
+      <div class="packages-grid">
+
+        <!-- STANDARD -->
+        <div class="pkg-card reveal" data-delay="0">
+          <div class="pkg-header">
+            <div class="pkg-tier">Tier 01</div>
+            <div class="pkg-name">Standard</div>
+            <p class="pkg-tagline">A thorough clean inside and out — your everyday refresh.</p>
+            <div class="pkg-price">
+              <span class="pkg-price-sym">$</span>
+              <span class="pkg-price-num">199</span>
+              <span class="pkg-price-note">starting price</span>
+            </div>
+          </div>
+          <div class="pkg-body">
+            <div class="pkg-section-label">Interior</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Full Interior Vacuum</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Wipe All Interior Surfaces</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Stain Spot Treatment</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Windows & Mirrors</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Floor Mat Clean & Detail</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Trunk Detail & Door Jambs</div>
+            <div class="pkg-section-label">Exterior</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Professional Hand Wash</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Rim & Tire Detail</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Wax Protection (3 months)</div>
+            <div class="pkg-cta"><a href="https://goldensautodetails.fieldd.co" class="btn-pkg-outline">Book Standard</a></div>
+          </div>
+        </div>
+
+        <!-- GOLD CLASS -->
+        <div class="pkg-card featured reveal" data-delay="120">
+          <div class="pkg-badge">Most Popular</div>
+          <div class="pkg-header">
+            <div class="pkg-tier">Tier 02</div>
+            <div class="pkg-name">Gold Class</div>
+            <p class="pkg-tagline">Our most popular — a complete professional detail, top to bottom.</p>
+            <div class="pkg-price">
+              <span class="pkg-price-sym">$</span>
+              <span class="pkg-price-num">229</span>
+              <span class="pkg-price-note">starting price</span>
+            </div>
+          </div>
+          <div class="pkg-body">
+            <div class="pkg-section-label">Interior</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Complete Interior Vacuum</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Wipe All Interior Surfaces</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Clean & Protect All Plastics</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Stain Spot Treatment</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Windows & Mirrors</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Floor Mat Detail & Shine</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Trunk Detail & Door Jambs</div>
+            <div class="pkg-section-label">Exterior</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Professional Hand Wash</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Wheel Well Clean</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Rim & Tire Detail</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Wax Protection (3 months)</div>
+            <div class="pkg-cta"><a href="https://goldensautodetails.fieldd.co" class="btn-pkg-gold">Book Gold Class</a></div>
+          </div>
+        </div>
+
+        <!-- MASTERPIECE -->
+        <div class="pkg-card reveal" data-delay="240">
+          <div class="pkg-header">
+            <div class="pkg-tier">Tier 03</div>
+            <div class="pkg-name">Masterpiece</div>
+            <p class="pkg-tagline">Full restoration — leaves your car looking and smelling showroom fresh.</p>
+            <div class="pkg-price">
+              <span class="pkg-price-sym">$</span>
+              <span class="pkg-price-num">329</span>
+              <span class="pkg-price-note">starting price</span>
+            </div>
+          </div>
+          <div class="pkg-body">
+            <div class="pkg-section-label">Interior Restoration</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Shampoo Seats & Carpets</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Double Vacuum Interior</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Clean & Protect All Plastics</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Stain Spot Treatment</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Windows & Mirrors</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Floor Mat Detail & Shine</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Trunk Detail & Door Jambs</div>
+            <div class="pkg-section-label">Exterior Restoration</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Professional Hand Wash</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Clay Bar Decontamination</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Wheel Wells & Rim Detail</div>
+            <div class="pkg-feature"><svg class="check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Wax Protection (3 months)</div>
+            <div class="pkg-cta"><a href="https://goldensautodetails.fieldd.co" class="btn-pkg-outline">Book Masterpiece</a></div>
+          </div>
+        </div>
+
+      </div>
+      <p class="packages-note">Starting prices for sedans & coupes. <span>SUVs, trucks & larger vehicles priced accordingly.</span> Contact us for a custom quote.</p>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why section" id="why">
+    <div class="container">
+      <div class="why-inner">
+        <div class="why-left reveal">
+          <div class="section-eyebrow">Why Golden's</div>
+          <div class="section-title">We Don't Just Clean.<br>We <span>Restore.</span></div>
+          <p>Every detail is done by hand with professional-grade products. No shortcuts, no rushing, no spray-and-wipe jobs. We treat your car the way we'd want ours treated.</p>
+          <div class="why-points">
+            <div class="why-point">
+              <div class="why-icon">📍</div>
+              <div>
+                <div class="why-point-title">We Come to You</div>
+                <p class="why-point-body">At your home, office, or anywhere in our service area. Zero drop-off, zero waiting around.</p>
+              </div>
+            </div>
+            <div class="why-point">
+              <div class="why-icon">🛡️</div>
+              <div>
+                <div class="why-point-title">Satisfaction Guaranteed</div>
+                <p class="why-point-body">Not happy with the result? We'll make it right — no questions asked.</p>
+              </div>
+            </div>
+            <div class="why-point">
+              <div class="why-icon">💳</div>
+              <div>
+                <div class="why-point-title">Easy Online Booking & Payment</div>
+                <p class="why-point-body">Book in minutes, pay by card. No cash, no checks, no hassle.</p>
+              </div>
+            </div>
+            <div class="why-point">
+              <div class="why-icon">✨</div>
+              <div>
+                <div class="why-point-title">Professional-Grade Products Only</div>
+                <p class="why-point-body">We use the same chemicals and tools trusted by professional detailers — not dollar store supplies.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="why-right reveal" data-delay="150">
+          <div class="metric-card">
+            <div class="metric-num">3 MO</div>
+            <div class="metric-label">Wax Protection</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-num">5★</div>
+            <div class="metric-label">Service Standard</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-num">100%</div>
+            <div class="metric-label">Mobile</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-num">2 HR</div>
+            <div class="metric-label">Avg. Response Time</div>
+          </div>
+          <div class="metric-card tall">
+            <div style="flex-shrink:0">
+              <div class="metric-num" style="font-size:2rem">✓</div>
+            </div>
+            <p class="metric-tall-body"><strong>No contracts, no commitments.</strong> Book when you need us — one time or every month. We earn your return visit with our work, not a subscription.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials section">
+    <div class="container">
+      <div class="testimonials-header reveal">
+        <div class="section-eyebrow">Client Reviews</div>
+        <div class="section-title">What Clients <span>Say</span></div>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal" data-delay="0">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">My car honestly looked better than when I bought it. He got out stains I thought were permanent and the outside was spotless. Will 100% be booking again.</p>
+          <div class="review-author">
+            <div class="review-avatar">JM</div>
+            <div>
+              <div class="review-name">Jordan M.</div>
+              <div class="review-meta">Gold Class Detail · Charlottesville, VA</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card reveal" data-delay="120">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">Super convenient that they come to you. Booked online the night before, he showed up on time, and my SUV looked incredible. Great communication throughout.</p>
+          <div class="review-author">
+            <div class="review-avatar">AT</div>
+            <div>
+              <div class="review-name">Ashley T.</div>
+              <div class="review-meta">Masterpiece Detail · Richmond, VA</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card reveal" data-delay="240">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">I have a toddler so my car was a disaster. He did the shampoo package and it smells and looks brand new. Prices are fair for the quality you get. Highly recommend.</p>
+          <div class="review-author">
+            <div class="review-avatar">KR</div>
+            <div>
+              <div class="review-name">Kayla R.</div>
+              <div class="review-meta">Masterpiece Detail · Charlottesville, VA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREAS -->
+  <section class="areas section" id="areas">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-eyebrow">Where We Operate</div>
+        <div class="areas-title">Service Areas</div>
+        <p class="areas-sub">We currently serve the following cities and surrounding areas. Not sure if we cover your location? Reach out and we'll let you know.</p>
+        <div class="areas-pills">
+          <div class="area-pill"><div class="area-dot"></div>Charlottesville, VA</div>
+          <div class="area-pill"><div class="area-dot"></div>Richmond, VA</div>
+          <div class="area-pill" style="opacity:0.45; cursor:default;">More areas coming soon</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner section">
+    <div class="container">
+      <div class="cta-banner-content reveal">
+        <div class="cta-eyebrow">Ready to Book?</div>
+        <div class="cta-title">Your Car Deserves<br><span>The Best.</span></div>
+        <p class="cta-sub">Book online in under 2 minutes. We'll handle the rest — showing up fully equipped, on time, ready to work.</p>
+        <div class="cta-buttons">
+          <a href="https://goldensautodetails.fieldd.co" class="btn-primary">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Book Your Detail Now
+          </a>
+          <a href="tel:8043863758" class="btn-secondary">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.75 16.92z"/></svg>
+            (804) 386-3758
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-name">GOLDEN'S <span>AUTO DETAILS</span></div>
+          <p class="footer-brand-desc">Professional mobile auto detailing serving Charlottesville and Richmond, VA. We come to you — no drop-off, no waiting.</p>
+          <a href="mailto:goldensautodetails@gmail.com" class="footer-contact-item">
+            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            goldensautodetails@gmail.com
+          </a>
+          <a href="tel:8043863758" class="footer-contact-item">
+            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.75 16.92z"/></svg>
+            (804) 386-3758
+          </a>
+        </div>
+        <div>
+          <div class="footer-col-title">Services</div>
+          <ul class="footer-links">
+            <li><a href="#packages">Standard Detail</a></li>
+            <li><a href="#packages">Gold Class Detail</a></li>
+            <li><a href="#packages">Masterpiece Detail</a></li>
+            <li><a href="#packages">Add-On Services</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Company</div>
+          <ul class="footer-links">
+            <li><a href="#why">Why Golden's</a></li>
+            <li><a href="#areas">Service Areas</a></li>
+            <li><a href="https://goldensautodetails.fieldd.co">Book Online</a></li>
+            <li><a href="mailto:goldensautodetails@gmail.com">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Follow Us</div>
+          <ul class="footer-links">
+            <li><a href="https://www.instagram.com/smg.details/">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@smg.details">TikTok</a></li>
+            <li><a href="https://www.youtube.com/channel/UCxVCM5bVhwq9tHepsx5eL0g">YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2025 Golden's Auto Details · Charlottesville & Richmond, VA</div>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/smg.details/" class="social-btn">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@smg.details" class="social-btn">
+            <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/channel/UCxVCM5bVhwq9tHepsx5eL0g" class="social-btn">
+            <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          const delay = parseInt(el.target.dataset.delay || 0);
+          setTimeout(() => el.target.classList.add('visible'), delay);
+          observer.unobserve(el.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Nav background on scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.style.background = window.scrollY > 60
+        ? 'rgba(0,0,0,0.96)'
+        : 'rgba(0,0,0,0.85)';
+    });
+  </script>
+</body>
+</html>
